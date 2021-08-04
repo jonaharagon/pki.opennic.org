@@ -1,0 +1,15 @@
+{% capture random %}
+{%- include random.html type="numbers" -%}
+{% endcapture %}
+<div class="accordion-item">
+  <h3 class="accordion-header" id="heading{{ random | remove: '<p>' | remove: '</p>' | strip_newlines }}">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ random | remove: '<p>' | remove: '</p>' | strip_newlines }}" aria-expanded="true" aria-controls="collapse{{ random | remove: '<p>' | remove: '</p>' | strip_newlines }}">
+      {{ include.title }}
+    </button>
+  </h3>
+  <div id="collapse{{ random | remove: '<p>' | remove: '</p>' | strip_newlines }}" class="accordion-collapse collapse" aria-labelledby="heading{{ random | remove: '<p>' | remove: '</p>' | strip_newlines }}" data-bs-parent="#{{ accordion }}">
+    <div class="accordion-body">
+      {{ include.content }}
+    </div>
+  </div>
+</div>
